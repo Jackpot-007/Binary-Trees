@@ -26,11 +26,13 @@ binary_tree_t
 	nodo->left = NULL;
 	nodo->right = NULL;
 
-	if (parent->left == NULL)
-		parent->left = nodo;
+	if (parent->left != NULL)
+	{
+		nodo->left = parent->left;
+		parent->left->parent = nodo;
+	}
 /*si n padre ya tiene un leftchild este pasa a ser leftchild de n creado*/
-	nodo->left = parent->left;
-	parent->left->parent = nodo;
+	parent->left = nodo;
 
 	return (nodo);
 }
